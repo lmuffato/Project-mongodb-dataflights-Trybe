@@ -23,3 +23,153 @@ db.voos.find(
     passageiros: 1,
     _id: 0
   });
+
+/* 7 - Retorne a quantidade de voos em que o ano seja menor do que 2017. */
+db.voos.count({ ano: { $lt: 2017 } });
+
+/* 8 - Retorne a quantidade de voos em que o ano seja maior do que 2016. */
+db.voos.count({ ano: { $gt: 2016 } });
+
+/* 9 - Retorne a quantidade de voos entre os anos de 2017 e 2018. */
+db.voos.count({ ano: { $in: [2017, 2018] } });
+
+/* 10 - Retorne apenas os 10 primeiros documentos com voos da empresa GOL
+do ano de 2017. Exiba apenas os campos vooId, empresa.nome, aeroportoOrigem.nome,
+aeroportoDestino.nome, mes e ano. */
+db.voos.find(
+  {
+    "empresa.nome": "GOL",
+    ano: 2017,
+  },
+  {
+    vooId: 1,
+    "empresa.nome": 1,
+    "aeroportoOrigem.nome": 1,
+    "aeroportoDestino.nome": 1,
+    mes: 1,
+    ano: 1,
+    _id: 0,
+  },
+).limit(10);
+
+/* 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais
+não seja igual a ESTADOS UNIDOS. */
+db.voos.count({ "aeroportoDestino.pais": { $ne: "ESTADOS UNIDOS" } });
+
+/* 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais
+seja igual a BRASIL, ARGENTINA ou CHILE. */
+db.voos.count({ "aeroportoDestino.pais": { $in: ["BRASIL", "ARGENTINA", "CHILE"] } });
+
+/* 13 - Retorne a quantidade de documentos em que o campo
+aeroportoDestino.continente não seja igual a EUROPA, ÁSIA e OCEANIA. */
+db.voos.count({
+  "aeroportoDestino.continente": { $nin: ["EUROPA", "ÁSIA", "OCEANIA"] } });
+
+/* 14 - Retorne o total de voos em que o país de origem não seja BRASIL. */
+db.voos.count({ "aeroportoOrigem.pais": { $ne: "BRASIL" } });
+
+/* 15 - Retorne o total de voos com mais de 20 decolagens. */
+db.voos.count({ decolagens: { $gt: 20 } });
+
+/* 16 - Retorne o total de voos em que o campo natureza possui o valor Internacional. */
+db.voos.count({ natureza: "Internacional" });
+
+/* 17 - Retorne o total de voos em que o campo natureza possui o valor Doméstica. */
+db.voos.count({ natureza: "Doméstica" });
+
+/* 18 - Retorne o vooId, mes e ano do primeiro voo com mais de 7000 passageiros
+pagos. */
+db.voos.findOne(
+  { "passageiros.pagos": { $gt: 7000 } },
+  { vooId: 1, mes: 1, ano: 1, _id: 0 },
+);
+
+/* 19 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel exista. */
+db.voos.findOne({ litrosCombustivel: { $exists: 1 } }, { vooId: 1, _id: 0 });
+
+/* 20 - Retorne o vooId do primeiro voo em que o campo rtk não exista. */
+db.voos.findOne({ rtk: { $exists: 0 } }, { vooId: 1, _id: 0 });
+
+/* 21 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel
+seja maior ou igual a 1000. */
+db.voos.findOne({ litrosCombustivel: { $gte: 1000 } }, { vooId: 1, _id: 0 });
+
+/* 22 - Retorne o vooId do primeiro voo em que a empresa seja
+DELTA AIRLINES ou AMERICAN AIRLINES, a sigla do aeroporto de origem
+seja SBGR e a sigla do aeroporto de destino seja KJFK. */
+db.voos.findOne(
+  {
+    $and: [
+      { "empresa.nome": { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] } },
+      { "aeroportoOrigem.sigla": "SBGR" },
+      { "aeroportoDestino.sigla": "KJFK" },
+      ],
+  },
+  {
+    vooId: 1,
+    _id: 0,
+  },
+);
+
+/* 23 - Retorne o vooId e litrosCombustivel do primeiro voo em que o campo
+litrosCombustivel não seja maior do que 1000 e o campo litrosCombustivel exista. */
+db.voos.findOne(
+  { litrosCombustivel: { $lte: 1000 } },
+  {
+    vooId: 1,
+    litrosCombustivel: 1,
+    _id: 0,
+  },
+);
+
+/* 24 - Retorne o vooId, empresa.nome e litrosCombustivel do primeiro voo em que
+litrosCombustivel não seja maior do que 600 e a empresa não seja GOL ou AZUL,
+e o campo litrosCombustivel exista. */
+db.voos.findOne(
+  {
+    $nor:
+      [
+        { litrosCombustivel: { $gt: 600 } },
+        { "empresa.nome": { $in: ["GOL", "AZUL"] } },
+        { litrosCombustivel: { $exists: 0 } }
+      ]
+  },
+  { vooId: 1, "empresa.nome": 1, litrosCombustivel: 1, _id: 0 },
+);
+
+/* 25 - Remova todos os voos da empresa AZUL em que a quantidade de combustível
+seja menor do que 400. Informe a quantidade de documentos removidos. */
+db.voos.deleteMany(
+  {
+        { "empresa.nome": "AZUL" },
+        { litrosCombustivel: { $lt: 400 } },
+  },
+);
+
+/* 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros
+pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10.
+Informe a quantidade de documentos removidos. */
+db.voos.deleteMany(
+  {
+    "empresa.nome": "GOL",
+    "passageiros.pagos": { $gte: 5, $lte: 10 },
+  },
+);
+
+/* 27 - Retorne a quantidade total de voos de natureza Doméstica que a empresa
+PASSAREDO possui, via uso de uma nova coleção chamada resumoVoos. */
+db.voos.count({ "empresa.nome": "PASSAREDO", natureza: "Doméstica" });
+
+db.resumoVoos.insertOne({ empresa: "PASSAREDO", totalVoosDomesticos: 4187 });
+
+db.resumoVoos.findOne({ empresa: "PASSAREDO" }, { empresa: 1, totalVoosDomesticos: 1, _id: 0 });
+
+/* 28 - Retorne a quantidade total de voos de natureza Doméstica que a empresa
+LATAM AIRLINES BRASIL possui, via uso de uma nova coleção chamada resumoVoos. */
+db.voos.count({ "empresa.nome": "LATAM AIRLINES BRASIL", natureza: "Doméstica" });
+
+db.resumoVoos.insertOne({ empresa: "LATAM AIRLINES BRASIL", totalVoosDomesticos: 20026 });
+
+db.resumoVoos.findOne({ empresa: "LATAM AIRLINES BRASIL" }, { empresa: 1, totalVoosDomesticos: 1, _id: 0 });
+
+
