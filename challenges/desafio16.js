@@ -1,0 +1,1 @@
+db.voos.find({ natureza: { $eq: "internacional" } }).count();
