@@ -1,0 +1,5 @@
+/* 1 - Retorne a quantidade de documentos inseridos na coleção voos. */
+db.voos.count();
+
+/* 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL. */
+db.voos.find({ 'empresa.nome': 'AZUL' }).limit(10);
