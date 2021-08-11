@@ -1,9 +1,1 @@
-db.voos.find({ ano: 2017, "empresa.nome": "GOL" },
- { 
-     vooId: 1, 
-     "empresa.nome": 1,
-      "eroportoOrigem.nome": 1,
-       "aeroportoDestino.nome": 1,
-        mes: 1,
-         ano: 1,
-          _id: 0 }).limit(10);
+db.voos.find({ ano: { $gte: 2017, $lte: 2018 } }).count();
