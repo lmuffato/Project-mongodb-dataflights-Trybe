@@ -1,1 +1,1 @@
-db.voos.find({ "empresa.nome": /gol/i }).count();
+db.voos.find({ "empresa.nome": "GOL" }).count();
