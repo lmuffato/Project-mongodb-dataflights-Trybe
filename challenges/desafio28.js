@@ -10,11 +10,11 @@ e totalVoosDomesticos (o total retornado anteriormente).
 
 2. Em uma segunda query, retorne a empresa e o totalVoosDomesticos do primeiro
 documento presente na coleção resumoVoos em que a empresa seja LATAM AIRLINES BRASIL. */
-const NOME = "LATAM AIRLINES BRASIL";
-const totalVoosDomesticos = db.voos.count({ "empresa.nome": NOME,
+const empresa = "LATAM AIRLINES BRASIL";
+const totalVoosDomesticos = db.voos.count({ "empresa.nome": empresa,
 natureza: "Doméstica" });
 
-db.resumoVoos.insertOne({ "empresa.nome": NOME, totalVoosDomesticos });
+db.resumoVoos.insertOne({ empresa, totalVoosDomesticos });
 
-db.resumoVoos.findOne({ empresa: NOME }, {
+db.resumoVoos.findOne({ empresa }, {
    _id: 0, empresa: 1, totalVoosDomesticos: 1 });
