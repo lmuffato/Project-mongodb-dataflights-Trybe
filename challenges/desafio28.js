@@ -6,4 +6,5 @@ db.resumoVoos.insertOne({
     natureza: "Doméstica",
   }),
 });
+
 db.resumoVoos.findOne({ empresa: LATAM }, { _id: 0 });
