@@ -9,4 +9,4 @@ db.resumoVoos.insertOne({
     }),
   });
   
-db.resumoVoos.find({ empresa: LAB });
+db.resumoVoos.find({ empresa: LAB }, { _id: 0, empresa: 1, totalVoosDomesticos: 1 });
