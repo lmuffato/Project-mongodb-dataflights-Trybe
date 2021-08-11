@@ -7,6 +7,6 @@ db.resumoVoos.insertOne({
       { natureza: "Doméstica" },
     ],
     }),
-  });
+});
   
-db.resumoVoos.find({ empresa: LAB }, { _id: 0, empresa: 1, totalVoosDomesticos: 1 });
+db.resumoVoos.findOne({ empresa: LAB }, { _id: 0, empresa: 1, totalVoosDomesticos: 1 });
