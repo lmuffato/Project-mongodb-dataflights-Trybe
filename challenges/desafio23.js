@@ -1,6 +1,6 @@
 db.voos.find(
   {
-    litrosCombustivel : { $lte: 1000, $exists: true },
+    litrosCombustivel: { $lte: 1000, $exists: true },
   },
   {
     vooId: 1,

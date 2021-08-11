@@ -1,6 +1,6 @@
-let u = db.voos.find({
-    "empresa.nome": "PASSAREDO",
-    "natureza": "Doméstica",
+const u = db.voos.find({
+  "empresa.nome": "PASSAREDO",
+  natureza: "Doméstica",
 }).count();
 
 db.resumoVoos.insertOne({

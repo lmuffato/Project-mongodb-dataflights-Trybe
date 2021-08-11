@@ -1,7 +1,7 @@
 db.voos.find(
   {
-    litrosCombustivel : { $lte: 600, $exists: true },
-    "empresa.nome": { $nin: ["GOL", "AZUL"] }
+    litrosCombustivel: { $lte: 600, $exists: true },
+    "empresa.nome": { $nin: ["GOL", "AZUL"] },
   },
   {
     vooId: 1,

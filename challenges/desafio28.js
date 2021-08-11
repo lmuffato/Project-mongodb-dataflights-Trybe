@@ -1,6 +1,6 @@
-let u = db.voos.find({
-    "empresa.nome": "LATAM AIRLINES BRASIL",
-    "natureza": "Doméstica",
+const u = db.voos.find({
+  "empresa.nome": "LATAM AIRLINES BRASIL",
+  natureza: "Doméstica",
 }).count();
 
 db.resumoVoos.insertOne({
