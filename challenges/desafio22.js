@@ -1,6 +1,6 @@
 db.voos.findOne({
   $and: [
-    { litrosCombustivel: { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] } },
+    { "empresa.nome": { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] } },
     { "aeroportoOrigem.sigla": "SBGR" },
     { "aeroportoDestino.sigla": "KJFK" },
     
