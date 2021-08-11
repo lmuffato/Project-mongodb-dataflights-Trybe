@@ -13,7 +13,9 @@ const resumoVoos = db.voos.count({
 });
 
 db.resumoVoos.insertMany([{
-  "empresa.nome": "PASSAREDO",
+  empresa: {
+    nome: "PASSAREDO",
+  },
 }, {
   totalVoosDomesticos: resumoVoos,
 }]);
