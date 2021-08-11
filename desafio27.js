@@ -4,5 +4,24 @@
 // Para isso, escreva no arquivo desafio27.js duas queries, nesta ordem:
 
 // 1- Conte quantos voos da empresa PASSAREDO cujo campo natureza possua valor igual a Doméstica e crie uma query que insira na coleção resumoVoos um documento com os campos: empresa (nome da empresa) e totalVoosDomesticos (o total retornado anteriormente).
+const resumoVoos = db.voos.count({
+  $and: [{
+    natureza: "Doméstica",
+  }, {
+    "empresa.nome": "PASSAREDO",
+  }],
+});
+
+db.resumoVoos.insertMany([{
+  "empresa.nome": "PASSAREDO",
+}, {
+  totalVoosDomesticos: resumoVoos,
+}]);
 
 // 2- Em uma segunda query, retorne a empresa e o totalVoosDomesticos do primeiro documento presente na coleção resumoVoos em que a empresa seja PASSAREDO.
+db.resumoVoos.find({
+  "empresa.nome": "PASSAREDO",
+}, {
+  "empresa.nome": 1,
+  totalVoosDomesticos: 1,
+}).limit(1);
