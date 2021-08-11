@@ -1,1 +1,1 @@
-db.dataFlights.find({ "empresa.nome": "AZUL"}).limit(10);
+db.dataFlights.find({ "empresa.nome": "AZUL" }).limit(10);
