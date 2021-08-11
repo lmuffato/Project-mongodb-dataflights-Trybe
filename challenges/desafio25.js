@@ -1,0 +1,1 @@
+db.voos.deleteOne({ litrosCombustivel: { $lt: 400 } });
