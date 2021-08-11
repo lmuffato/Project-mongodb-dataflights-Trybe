@@ -7,6 +7,4 @@ db.voos.deleteMany({
       $lt: 400,
     },
   }],
-}, {
-  litrosCombustivel: 1,
 });
