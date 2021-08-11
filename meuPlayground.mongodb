@@ -3,3 +3,23 @@ db.voos.count();
 
 /* 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL. */
 db.voos.find({ 'empresa.nome': 'AZUL' }).limit(10);
+
+/* 3 - Retorne a quantidade de voos da empresa AZUL. */
+db.voos.count({ "empresa.nome": "AZUL" });
+
+/* 4- Retorne a quantidade de voos da empresa GOL. */
+db.voos.count({ "empresa.nome": "GOL" });
+
+/* 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos. */
+db.voos.find({}, { vooId: 1, _id: 0 }).skip(9).limit(3);
+
+/* 6 - Retorne apenas os campos empresa.sigla,
+empresa.nome e passageiros do voo com o campo vooId igual a 756807. */
+db.voos.find(
+  { vooId: 756807 },
+  {
+    "empresa.sigla": 1,
+    "empresa.nome": 1,
+    passageiros: 1,
+    _id: 0
+  });
