@@ -1,1 +1,1 @@
-db.voos.find().limit(10);
+db.voos.find({ "empresa.nome": "AZUL" }).limit(10);
