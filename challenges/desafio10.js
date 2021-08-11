@@ -3,6 +3,7 @@ GOL do ano de 2017. Exiba apenas os campos vooId, empresa.nome,
 aeroportoOrigem.nome, aeroportoDestino.nome, mes e ano. */
 
 db.voos.find({ ano: 2017, "empresa.nome": "GOL" }, { 
+  _id: 0,
   vooId: 1,
   "empresa.nome": 1,
   "aeroportoOrigem.nome": 1,
