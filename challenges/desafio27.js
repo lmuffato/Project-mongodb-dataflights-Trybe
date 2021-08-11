@@ -16,6 +16,6 @@ do primeiro documento presente na coleção resumoVoos em que a empresa seja PAS
 const totalVoosDomesticos = db.voos.count({ "empresa.nome": "PASSAREDO",
 natureza: "Doméstica" });
 
-db.resumoVoos.insertOne({ empresa: "PASSAREDO" }, totalVoosDomesticos);
+db.resumoVoos.insertOne({ empresa: "PASSAREDO", totalVoosDomesticos });
 
 db.resumoVoos.findOne({ empresa: "PASSAREDO" }, { _id: 0, empresa: 1, totalVoosDomesticos: 1 });
