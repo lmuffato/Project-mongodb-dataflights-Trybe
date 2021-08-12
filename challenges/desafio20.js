@@ -1,5 +1,5 @@
 db.voos.find({
-  litrosCombustivel: { $exists: true } },
+  rtk: { $exists: false } },
   {
     _id: false,
     vooId: true,
