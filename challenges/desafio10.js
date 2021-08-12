@@ -6,4 +6,4 @@ db.voos.find({ ano: { $gt: 2017 }, "empresa.nome": "GOL" }, {
   "aeroportoDestino.nome": 1,
   mes: 1,
   ano: 1,
- }).pretty();
+ }).limit(10).pretty();
