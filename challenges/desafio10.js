@@ -1,5 +1,5 @@
 db.voos.find({
-  "empresa.nome": "AZUL",
+  "empresa.nome": "GOL",
   ano: 2017 },
   { _id: false,
   vooId: true,
