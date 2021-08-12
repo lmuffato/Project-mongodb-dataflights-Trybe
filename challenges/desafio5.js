@@ -1,0 +1,1 @@
+db.voos.find({ vooId: 743227 }, { vooId: 1, _id: 0 });
