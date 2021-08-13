@@ -1,1 +1,1 @@
-db.voos.countDocuments();
+db.voos.count();
