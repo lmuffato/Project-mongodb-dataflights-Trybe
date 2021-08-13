@@ -18,6 +18,6 @@ db.resumoVoos.find(
     { 
       empresa: 1,
       totalVoosDomesticos: 1,
-      id: 0,
+      _id: 0,
     },
   ).limit(1);
