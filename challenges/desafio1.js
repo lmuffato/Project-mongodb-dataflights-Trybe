@@ -1,1 +1,1 @@
-// teste
+db.voos.find().count();
