@@ -4,7 +4,7 @@ db.resumoVoos.insertOne({
   empresa,
   totalVoosDomesticos: db.voos.count({
     "empresa.nome": empresa,
-    natureza: "Domestica",
+    natureza: "Doméstica",
   }),
 });
 
