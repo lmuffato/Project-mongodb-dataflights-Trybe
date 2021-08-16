@@ -1,7 +1,5 @@
 db.voos
   .deleteMany(
-    { $and: [
-      { "passageiros.pagos": { $lte: 5, $gte: 10 } },
-      { "empresa.nome": "GOL" },
-    ] },
-);
+    { "empresa.nome": "GOL" },
+    { "passageiros.pagos": { $lte: 5, $gte: 10 } },
+  );
