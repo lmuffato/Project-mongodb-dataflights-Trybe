@@ -1,3 +1,3 @@
 // challenge 1;
 
-// iniciando project
+db.voos.count();
