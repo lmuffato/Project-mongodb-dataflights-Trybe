@@ -1,19 +1,19 @@
-const empresa = "PASSAREDO";
+const EMPRESA = "PASSAREDO";
 
-const totalVoosDomestico = db.voos.count({
+const voosDomesticos = db.voos.count({
   natureza: "Doméstica",
-  "empresa.nome": empresa,
+  "empresa.nome": EMPRESA,
 });
 
 db.resumoVoos.insertOne({
-  empresa,
-  totalVoosDomestico,
+  empresa: EMPRESA,
+  totalVoosDomesticos: voosDomesticos,
 });
 
-db.resumoVoos.findOne({ empresa }, {
+db.resumoVoos.findOne({}, {
   _id: 0,
   empresa: 1,
-  totalVoosDomestico: 1,
+  totalVoosDomesticos: 1,
 });
 
 // Não tinha certeza como resolver esse problema e dei uma olhada
@@ -30,3 +30,8 @@ db.resumoVoos.findOne({ empresa }, {
 // mas com uma implementação diferente. Estou enviando algo parecido
 // para ver se o github aceita!
 // https://github.com/tryber/sd-010-a-mongodb-dataflights/pull/96
+
+// PS²: Percebi que o erro estava no nome que dei ao
+// "totalVoosDomestico"... Faltou acrescentar um "s"...
+// Voltarei meu código ao que estava antes para manter o que eu fiz
+// e confirmar que era apenas isso mesmo.
