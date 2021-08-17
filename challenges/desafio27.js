@@ -2,12 +2,12 @@
 // O repositório do Murilo me ajudou a ver que poderia salvar o resultado da consulta
 // em uma variável.
 
-const totalVoosDomesticos = db.voos.find({
+const totalVoosDomesticos = db.voos.count({
   natureza: "Doméstica",
   "empresa.nome": "PASSAREDO",
-}).count();
+});
 
-db.resumoVoos.insert({
+db.resumoVoos.insertOne({
   empresa: "PASSAREDO",
   totalVoosDomesticos,
 });
