@@ -1,10 +1,10 @@
 db.voos.find(
     { $and:
         [
-            { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] },
-            { "aeroportoOrigem.sigla": { $eq: "SGBR" } },
+            { "empresa.nome": { $in: ["DELTA AIRLINES", "AMERICAN AIRLINES"] } },
+            { "aeroportoOrigem.sigla": { $eq: "SBGR" } },
             { "aeroportoDestino.sigla": { $eq: "KJFK" } },
         ],
     },
     { vooId: 1 },
-);
+).limit(1);
