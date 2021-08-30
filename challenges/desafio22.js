@@ -6,5 +6,5 @@ db.voos.find(
             { "aeroportoDestino.sigla": { $eq: "KJFK" } },
         ],
     },
-    { vooId: 1 },
+    { vooId: 1, _id: 0 },
 ).limit(1);
