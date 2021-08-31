@@ -4,7 +4,7 @@ db.voos.find(
     ano: { $eq: 2017 },
   },
   {
-    vooID: 1,
+    vooId: 1,
     "empresa.nome": 1,
     "aeroportoOrigem.nome": 1,
     "aeroportoDestino.nome": 1,
