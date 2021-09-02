@@ -10,4 +10,4 @@ db.voos.find({
     "aeroportoDestino.nome": 1,
     ano: 2016,
     mes: 1,
-  }); 
+  });
