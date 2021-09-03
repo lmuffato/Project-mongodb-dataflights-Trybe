@@ -1,5 +1,5 @@
 db.voos.find(
-    { ano: { $eq: 2017 } },
+    { "empresa.nome": "GOL", ano: 2017 },
     {   
         vooId: 1,
         "empresa.nome": 1,
